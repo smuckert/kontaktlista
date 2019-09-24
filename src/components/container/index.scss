@@ -1,0 +1,12 @@
+.container {
+  background-image: linear-gradient(#2f3142, #b7c0ce);
+  //linear-gradient(#2f3142 33%, #4e536f 66%, #b7c0ce 100%);
+  min-height: calc(100vh - 40px);
+  width: calc(100% - 40px);
+  padding: 20px;
+
+  & h2 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

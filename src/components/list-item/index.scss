@@ -1,0 +1,54 @@
+.list-item {
+  background: #4e536f;
+  margin: 2px;
+  padding: 10px;
+  position: relative;
+
+  &:first-child {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+
+  & .name-wrapper {
+    display: flex;
+
+    & img {
+      display: none;
+      height: 16px;
+      width: 16px;
+    }
+  }
+
+  & .active-view {
+    display: none;
+  }
+  
+  &.active {
+    & .name-wrapper {
+      & > img {
+        display: block;
+        margin-left: 5px;
+      }
+    }
+
+    & .active-view {
+      display: block;
+    }
+
+    & .close-button {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+    }
+
+    & h6 {
+      margin: 0;
+      margin-top: 10px;
+    }
+  }
+}

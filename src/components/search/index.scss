@@ -1,0 +1,26 @@
+.search {
+  max-width: 100%;
+
+  & .search-input {
+    border: none;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    background: #4e536f;
+
+    &::placeholder {
+      padding-left: 10px;
+    }
+  }
+
+  & .filter-div {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+
+    & h6 {
+      margin-bottom: 5px;
+    }
+  }
+}
