@@ -48,9 +48,7 @@ const ListItem = (props) => {
 
   // set all items as inactive when toggle between favorites
   useEffect(() => {
-    if (active) {
-      setActive(false);
-    }
+    setActive(false);
   }, [favoritesVisible]);
 
   return (
