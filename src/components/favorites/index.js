@@ -11,6 +11,9 @@ const Favorites = (props) => {
     setFilteredFavorites,
   } = props;
 
+  // split up filteredFavorites and favorites to be able to use
+  // favorites array as initial value when you erase the search input text
+
   let renderFavorites;
 
   if (renderFilteredFavorites) {

@@ -31,6 +31,7 @@ const ListItem = (props) => {
     setFavorites(favorites.concat(arr));
   }
 
+  // removes deleted item via index
   const onRemoveFavorite = () => {
     let arr = [...favorites];
 
@@ -45,6 +46,8 @@ const ListItem = (props) => {
     setFavorites(arr);
   }
 
+  // had to use this function to remove same item from both arrays
+  // if you delete it when you have already searched
   const onRemoveFilteredFavorite = () => {
     let arr = [...filteredFavorites];
 
