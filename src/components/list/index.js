@@ -5,7 +5,10 @@ import ListItem from '../list-item';
 import './index.scss';
 
 const List = (props) => {
-  const { contacts, setAllContacts, favorites, setFavorites, favoritesVisible, showFavorites } = props;
+  const { 
+    contacts, setAllContacts, 
+    favorites, setFavorites 
+  } = props;
 
   const renderContacts = contacts.map((item, i) => (
     <ListItem 
@@ -14,7 +17,7 @@ const List = (props) => {
       setAllContacts={setAllContacts}
       favorites={favorites}
       setFavorites={setFavorites}
-      key={`list-item-${i}`} 
+      key={`contacts-list-item-${i}`} 
     />
   ));
 

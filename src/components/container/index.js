@@ -11,10 +11,12 @@ import { contacts } from './contacts.js';
 const Container = () => {
   const [allContacts, setAllContacts] = useState(contacts);
   const [favorites, setFavorites] = useState([]);
+  const [filteredFavorites, setFilteredFavorites] = useState([]);
+  const [renderFilteredFavorites, setRenderFilteredFavorites] = useState(false);
   const [showFavorites, setShowFavorites] = useState(false);
   
   const toggleFavorites = () => {
-   setShowFavorites(!showFavorites);
+    setShowFavorites(!showFavorites);
   }
 
   return (
@@ -25,6 +27,10 @@ const Container = () => {
         setAllContacts={setAllContacts}
         initialContacts={contacts}
         favorites={favorites}
+        setFavorites={setFavorites}
+        showFavorites={showFavorites}
+        setFilteredFavorites={setFilteredFavorites}
+        setRenderFilteredFavorites={setRenderFilteredFavorites}
       />
       <div className="filter-div">
         {showFavorites ? (
@@ -38,6 +44,8 @@ const Container = () => {
           favorites={favorites}
           setFavorites={setFavorites}
           showFavorites={showFavorites}
+          filteredFavorites={filteredFavorites}
+          renderFilteredFavorites={renderFilteredFavorites}
         />
         ) : (
         <List 

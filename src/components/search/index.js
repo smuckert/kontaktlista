@@ -3,7 +3,11 @@ import React, { useState, useRef } from 'react';
 import './index.scss';
 
 const Search = (props) => {
-  const { contacts, setAllContacts, initialContacts } = props;
+  const { 
+    contacts, setAllContacts, initialContacts, 
+    showFavorites, favorites, setFilteredFavorites,
+    setRenderFilteredFavorites,
+  } = props;
 
   const [inputValue, setInputValue] = useState('');
 
@@ -15,19 +19,34 @@ const Search = (props) => {
 
   const onSearchClick = () => {
     let newContacts = [];
-
     const regExp = new RegExp(inputValue.toLowerCase());
 
-    contacts.filter(contact => {
-      if (regExp.test(contact.name.toLowerCase()) && inputValue !== '') {
-        newContacts.push(contact);
+    if (showFavorites) {
+      favorites.filter(contact => {
+        if (regExp.test(contact.name.toLowerCase()) && inputValue !== '') {
+          newContacts.push(contact);
+        }
+      });
+
+      if (inputValue === '') {
+        setRenderFilteredFavorites(false);
+      } else {
+        setRenderFilteredFavorites(true);
+        setFilteredFavorites(newContacts);
       }
-    });
-    if (inputValue === '') {
-      setAllContacts(initialContacts);
     } else {
-      setAllContacts(newContacts);
-    }   
+      contacts.filter(contact => {
+        if (regExp.test(contact.name.toLowerCase()) && inputValue !== '') {
+          newContacts.push(contact);
+        }
+      });
+
+      if (inputValue === '') {
+        setAllContacts(initialContacts);
+      } else {
+        setAllContacts(newContacts);
+      }
+    }    
   };
 
   const onEnter = (e) => {
