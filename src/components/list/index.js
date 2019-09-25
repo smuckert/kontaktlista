@@ -2,21 +2,22 @@ import React from 'react';
 
 import ListItem from '../list-item';
 
+import './index.scss';
+
 const List = (props) => {
-  const { contacts, setAllContacts, favorites, setFavorites, favoritesVisible } = props;
+  const { contacts, setAllContacts, favorites, setFavorites, favoritesVisible, showFavorites } = props;
 
   const renderContacts = contacts.map((item, i) => (
     <ListItem 
       item={item}
+      contacts={contacts}
       setAllContacts={setAllContacts}
       favorites={favorites}
       setFavorites={setFavorites}
-      favoritesVisible={favoritesVisible}
       key={`list-item-${i}`} 
     />
   ));
 
-  console.log(contacts);
   return (
     <div className="list">
       {renderContacts}

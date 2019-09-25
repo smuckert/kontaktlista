@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import './index.scss';
 
 const Search = (props) => {
-  const { contacts, setAllContacts, initialContacts, favorites, favoritesVisible, setFavoritesVisible } = props;
+  const { contacts, setAllContacts, initialContacts } = props;
 
   const [inputValue, setInputValue] = useState('');
 
@@ -23,31 +23,12 @@ const Search = (props) => {
         newContacts.push(contact);
       }
     });
-
-    if (favoritesVisible) {
-      if (inputValue === '') {
-        setAllContacts(favorites);
-      } else {
-        setAllContacts(newContacts);
-      }
+    if (inputValue === '') {
+      setAllContacts(initialContacts);
     } else {
-      if (inputValue === '') {
-        setAllContacts(initialContacts);
-      } else {
-        setAllContacts(newContacts);
-      }
-    }    
+      setAllContacts(newContacts);
+    }   
   };
-
-  const onShowFavorites = () => {
-    setFavoritesVisible(!favoritesVisible);
-    setAllContacts(favorites);
-  }
-
-  const onShowAll = () => {
-    setFavoritesVisible(!favoritesVisible)
-    setAllContacts(initialContacts);
-  }
 
   const onEnter = (e) => {
     if (e.key === 'Enter') {
@@ -58,13 +39,6 @@ const Search = (props) => {
   return (
     <div className="search">
       <input className="search-input" ref={inputRef} placeholder="Sök" onChange={onHandleChange} onKeyPress={onEnter} />
-      <div className="filter-div">
-      {favoritesVisible ? (
-        <h6 onClick={onShowAll}>Visa alla</h6>
-        ) : (
-        <h6 onClick={onShowFavorites}>Filtrera favoriter</h6>
-      )}
-      </div>
     </div>
   );
 }

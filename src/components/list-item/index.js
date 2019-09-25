@@ -7,7 +7,7 @@ import StarBorder from '../../img/star_border.svg';
 import './index.scss';
 
 const ListItem = (props) => {
-  const { item, favorites, setFavorites, favoritesVisible} = props;
+  const { item, favorites, setFavorites, isFavorite} = props;
 
   const [active, setActive] = useState(false);
   const [addedToFavorite, setAddedToFavorite] = useState(false);
@@ -26,7 +26,6 @@ const ListItem = (props) => {
   
     arr.push(item);
     setFavorites(favorites.concat(arr));
-    setAddedToFavorite(true);
   }
 
   const onRemoveFavorite = () => {
@@ -39,28 +38,37 @@ const ListItem = (props) => {
     });
 
     setFavorites(arr);
-    setAddedToFavorite(false);
   }
 
-  console.log(item, 'this is item');
+  let favoriteButtons;
 
-  console.log(favorites, 'this is favorites');
+  if (!isFavorite) {
+    favoriteButtons = (
+       addedToFavorite ? (
+        <img src={Star} onClick={onRemoveFavorite} alt="Remove favorite" />
+      ) : (
+        <img src={StarBorder} onClick={onAddFavorite} alt="Add favorite" />
+      )
+    )
+  } else {
+    favoriteButtons = (
+      <img src={Star} onClick={onRemoveFavorite} alt="Remove favorite" />
+    )
+  }
 
-  // set all items as inactive when toggle between favorites
   useEffect(() => {
-    setActive(false);
-  }, [favoritesVisible]);
+   if(favorites.includes(item)) {
+     setAddedToFavorite(true);
+   } else {
+     setAddedToFavorite(false);
+   }
+  }, [favorites]);
 
   return (
     <div className={`list-item${active ? ' active' : ''}`} onClick={onActiveClick}>
       <div className="name-wrapper">
         <p>{item.name}</p>
-        { addedToFavorite ? (
-          <img src={Star} onClick={onRemoveFavorite} alt="Remove favorite" />
-        ) : (
-          <img src={StarBorder} onClick={onAddFavorite} alt="Add favorite" />
-        )}
-        
+        {favoriteButtons}
       </div>
       <div className="active-view">
         <img className="close-button" src={Close} alt="Close button" onClick={onCloseClick} />
