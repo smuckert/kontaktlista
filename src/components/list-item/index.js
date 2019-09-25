@@ -80,6 +80,7 @@ const ListItem = (props) => {
     )
   }
 
+  
   // check if item exists in favorites to set state
   useEffect(() => {
    if(favorites.includes(item)) {
@@ -87,7 +88,7 @@ const ListItem = (props) => {
    } else {
      setAddedToFavorite(false);
    }
-  }, [favorites]);
+  }, [favorites, item]);
 
   return (
     <div className={`list-item${active ? ' active' : ''}`} onClick={onActiveClick}>
