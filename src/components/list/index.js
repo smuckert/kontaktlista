@@ -17,7 +17,7 @@ const List = (props) => {
       setAllContacts={setAllContacts}
       favorites={favorites}
       setFavorites={setFavorites}
-      key={`contacts-list-item-${i}`} 
+      key={`contacts-list-item-${item.name + i}`} 
     />
   ));
 

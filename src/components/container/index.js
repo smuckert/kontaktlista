@@ -46,6 +46,7 @@ const Container = () => {
           showFavorites={showFavorites}
           filteredFavorites={filteredFavorites}
           renderFilteredFavorites={renderFilteredFavorites}
+          setFilteredFavorites={setFilteredFavorites}
         />
         ) : (
         <List 

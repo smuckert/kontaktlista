@@ -46,7 +46,7 @@ const Search = (props) => {
       } else {
         setAllContacts(newContacts);
       }
-    }    
+    }
   };
 
   const onEnter = (e) => {

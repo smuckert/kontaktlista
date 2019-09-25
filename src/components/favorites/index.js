@@ -7,7 +7,7 @@ import './index.scss';
 const Favorites = (props) => {
   const { 
     favorites, showFavorites, setFavorites, 
-    filteredFavorites, renderFilteredFavorites 
+    filteredFavorites, renderFilteredFavorites, setFilteredFavorites,
   } = props;
 
   let renderFavorites;
@@ -19,7 +19,9 @@ const Favorites = (props) => {
         favorites={favorites}
         isFavorite
         setFavorites={setFavorites}
-        key={`filtered-favorites-list-item-${i}`} 
+        filteredFavorites={filteredFavorites}
+        setFilteredFavorites={setFilteredFavorites}
+        key={`filtered-favorites-list-item-${item.name + i}`}
       />
     ));
   } else {
@@ -29,7 +31,10 @@ const Favorites = (props) => {
         favorites={favorites}
         isFavorite
         setFavorites={setFavorites}
-        key={`favorites-list-item-${i}`} 
+        filteredFavorites={filteredFavorites}
+        setFilteredFavorites={setFilteredFavorites}
+        index={i}
+        key={`favorites-list-item-${item.name + i}`} 
       />
     ));
   }

@@ -7,7 +7,10 @@ import StarBorder from '../../img/star_border.svg';
 import './index.scss';
 
 const ListItem = (props) => {
-  const { item, favorites, setFavorites, isFavorite } = props;
+  const { 
+    item, favorites, setFavorites, isFavorite,
+    filteredFavorites, setFilteredFavorites 
+  } = props;
 
   const [active, setActive] = useState(false);
   const [addedToFavorite, setAddedToFavorite] = useState(false);
@@ -40,6 +43,20 @@ const ListItem = (props) => {
     setFavorites(arr);
   }
 
+  const onRemoveFilteredFavorite = () => {
+    let arr = [...filteredFavorites];
+
+    onRemoveFavorite();
+
+    arr.map((contact, i) => {
+      if (contact === item) {
+        arr.splice(i, 1);
+      }
+    });
+
+    setFilteredFavorites(arr);
+  }
+
   let favoriteButtons;
 
   if (!isFavorite) {
@@ -52,7 +69,7 @@ const ListItem = (props) => {
     )
   } else {
     favoriteButtons = (
-      <img src={Star} onClick={onRemoveFavorite} alt="Remove favorite" />
+      <img src={Star} onClick={onRemoveFilteredFavorite} alt="Remove favorite" />
     )
   }
 
