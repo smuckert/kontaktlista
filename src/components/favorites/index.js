@@ -6,11 +6,12 @@ const Favorites = (props) => {
   const { 
     favorites, showFavorites, setFavorites, 
     filteredFavorites, renderFilteredFavorites,
-    setFilteredFavorites,
+    setFilteredFavorites, activeDropdown, 
+    setActiveDropdown,
   } = props;
 
   // split up filteredFavorites and favorites to be able to use
-  // favorites array as initial value when you erase the search input text
+  // favorites array as initial value when you reset the search
 
   let renderFavorites;
 
@@ -23,6 +24,9 @@ const Favorites = (props) => {
         setFavorites={setFavorites}
         filteredFavorites={filteredFavorites}
         setFilteredFavorites={setFilteredFavorites}
+        activeDropdown={activeDropdown}
+        setActiveDropdown={setActiveDropdown}
+        index={i}
         key={`filtered-favorites-list-item-${item.name + i}`}
       />
     ));
@@ -35,6 +39,8 @@ const Favorites = (props) => {
         setFavorites={setFavorites}
         filteredFavorites={filteredFavorites}
         setFilteredFavorites={setFilteredFavorites}
+        activeDropdown={activeDropdown}
+        setActiveDropdown={setActiveDropdown}
         index={i}
         key={`favorites-list-item-${item.name + i}`} 
       />

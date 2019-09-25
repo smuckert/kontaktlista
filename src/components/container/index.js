@@ -14,6 +14,7 @@ const Container = () => {
   const [filteredFavorites, setFilteredFavorites] = useState([]);
   const [renderFilteredFavorites, setRenderFilteredFavorites] = useState(false);
   const [showFavorites, setShowFavorites] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
   
   const toggleFavorites = () => {
     setShowFavorites(!showFavorites);
@@ -49,6 +50,8 @@ const Container = () => {
             filteredFavorites={filteredFavorites}
             renderFilteredFavorites={renderFilteredFavorites}
             setFilteredFavorites={setFilteredFavorites}
+            activeDropdown={activeDropdown}
+            setActiveDropdown={setActiveDropdown}
           />
           ) : (
           <List 
@@ -57,6 +60,8 @@ const Container = () => {
             favorites={favorites}
             setFavorites={setFavorites}
             showFavorites={showFavorites}
+            activeDropdown={activeDropdown}
+            setActiveDropdown={setActiveDropdown}
           />
         )}
       </div>   

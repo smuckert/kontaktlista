@@ -5,7 +5,8 @@ import ListItem from '../list-item';
 const List = (props) => {
   const { 
     contacts, setAllContacts, 
-    favorites, setFavorites 
+    favorites, setFavorites,
+    activeDropdown, setActiveDropdown,
   } = props;
 
   const renderContacts = contacts.map((item, i) => (
@@ -15,6 +16,9 @@ const List = (props) => {
       setAllContacts={setAllContacts}
       favorites={favorites}
       setFavorites={setFavorites}
+      index={i}
+      activeDropdown={activeDropdown}
+      setActiveDropdown={setActiveDropdown}
       key={`contacts-list-item-${item.name + i}`} 
     />
   ));

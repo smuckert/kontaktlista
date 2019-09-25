@@ -9,7 +9,8 @@ import './index.scss';
 const ListItem = (props) => {
   const { 
     item, favorites, setFavorites, isFavorite,
-    filteredFavorites, setFilteredFavorites 
+    filteredFavorites, setFilteredFavorites, index, 
+    activeDropdown, setActiveDropdown
   } = props;
 
   const [active, setActive] = useState(false);
@@ -17,6 +18,7 @@ const ListItem = (props) => {
 
   const onActiveClick = () => {
     setActive(true);
+    setActiveDropdown(index);
   };
 
   const onCloseClick = (e) => {
@@ -91,7 +93,7 @@ const ListItem = (props) => {
   }, [favorites, item]);
 
   return (
-    <div className={`list-item${active ? ' active' : ''}`} onClick={onActiveClick}>
+    <div className={`list-item${active && activeDropdown === index ? ' active' : ''}`} onClick={onActiveClick}>
       <div className="name-wrapper">
         <p>{item.name}</p>
         {favoriteButtons}

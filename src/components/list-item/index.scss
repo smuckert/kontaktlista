@@ -33,7 +33,7 @@
     max-height: 0px;
     height: 300px;
     overflow: hidden;
-    transition: max-height 0.15s;
+    transition: max-height 0.25s;
 
     & > h6 {
       display: none;
@@ -62,7 +62,7 @@
       display: block;
       max-height: 300px;
       height: 300px;
-      transition: max-height 0.15s;
+      transition: max-height 0.25s;
 
       & > h6 {
         display: block;
