@@ -17,35 +17,50 @@ const Search = (props) => {
     setInputValue(inputRef.current.value);
   };
 
-  const onSearchClick = () => {
+  const searchAllContacts = () => {
     let newContacts = [];
     const regExp = new RegExp(inputValue.toLowerCase());
 
-    if (showFavorites) {
-      favorites.filter(contact => {
-        if (regExp.test(contact.name.toLowerCase()) && inputValue !== '') {
-          newContacts.push(contact);
-        }
-      });
-
-      if (inputValue === '') {
-        setRenderFilteredFavorites(false);
-      } else {
-        setRenderFilteredFavorites(true);
-        setFilteredFavorites(newContacts);
+    contacts.filter(contact => {
+      if (regExp.test(contact.name.toLowerCase()) && inputValue !== '') {
+        newContacts.push(contact);
       }
+
+      return null;
+    });
+
+    if (inputValue === '') {
+      setAllContacts(initialContacts);
     } else {
-      contacts.filter(contact => {
-        if (regExp.test(contact.name.toLowerCase()) && inputValue !== '') {
-          newContacts.push(contact);
-        }
-      });
+      setAllContacts(newContacts);
+    }
+  }
 
-      if (inputValue === '') {
-        setAllContacts(initialContacts);
-      } else {
-        setAllContacts(newContacts);
+  const searchFavorites = () => {
+    let newContacts = [];
+    const regExp = new RegExp(inputValue.toLowerCase());
+
+    favorites.filter(contact => {
+      if (regExp.test(contact.name.toLowerCase()) && inputValue !== '') {
+        newContacts.push(contact);
       }
+
+      return null;
+    });
+
+    if (inputValue === '') {
+      setRenderFilteredFavorites(false);
+    } else {
+      setRenderFilteredFavorites(true);
+      setFilteredFavorites(newContacts);
+    }
+  }
+
+  const onSearchClick = () => {
+    if (showFavorites) {
+      searchFavorites();
+    } else {
+      searchAllContacts();
     }
   };
 

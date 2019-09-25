@@ -38,6 +38,8 @@ const ListItem = (props) => {
       if (contact === item) {
         arr.splice(i, 1);
       }
+
+      return null;
     });
 
     setFavorites(arr);
@@ -46,19 +48,21 @@ const ListItem = (props) => {
   const onRemoveFilteredFavorite = () => {
     let arr = [...filteredFavorites];
 
-    onRemoveFavorite();
-
     arr.map((contact, i) => {
       if (contact === item) {
         arr.splice(i, 1);
       }
+
+      return null;
     });
 
+    onRemoveFavorite();
     setFilteredFavorites(arr);
   }
 
+  // set img to Star as initial if you go to favorites
   let favoriteButtons;
-
+  
   if (!isFavorite) {
     favoriteButtons = (
        addedToFavorite ? (
@@ -73,6 +77,7 @@ const ListItem = (props) => {
     )
   }
 
+  // check if item exists in favorites to set state
   useEffect(() => {
    if(favorites.includes(item)) {
      setAddedToFavorite(true);

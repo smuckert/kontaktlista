@@ -7,7 +7,8 @@ import './index.scss';
 const Favorites = (props) => {
   const { 
     favorites, showFavorites, setFavorites, 
-    filteredFavorites, renderFilteredFavorites, setFilteredFavorites,
+    filteredFavorites, renderFilteredFavorites,
+    setFilteredFavorites,
   } = props;
 
   let renderFavorites;

@@ -39,6 +39,7 @@ const Container = () => {
           <h6 onClick={toggleFavorites}>Filtrera favoriter</h6>
         )}
       </div>
+      {/* split up favorites and all contacts in different components */}
       {showFavorites ? (
         <Favorites 
           favorites={favorites}
