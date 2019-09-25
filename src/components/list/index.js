@@ -2,8 +2,6 @@ import React from 'react';
 
 import ListItem from '../list-item';
 
-import './index.scss';
-
 const List = (props) => {
   const { 
     contacts, setAllContacts, 

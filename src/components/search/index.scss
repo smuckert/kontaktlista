@@ -1,5 +1,8 @@
+@import '../../styles/variables.scss';
+
 .search {
   max-width: 100%;
+  position: relative;
 
   & .search-input {
     border: none;
@@ -7,20 +10,28 @@
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 5px;
-    background: #4e536f;
+    background: #3a3d52;
+    color: #aaaaaa;
+    box-sizing: border-box;
+    padding-left: 10px;
 
     &::placeholder {
-      padding-left: 10px;
+      color: #aaaaaa;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    @media #{$medium} {
+      font-size: 16px;
     }
   }
 
-  & .filter-div {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 10px;
-
-    & h6 {
-      margin-bottom: 5px;
-    }
+  & > img {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 8px);
+    width: 16px;
   }
 }

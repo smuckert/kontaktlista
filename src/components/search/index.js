@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
 
+import SearchIcon from '../../img/magnifier.svg';
+
 import './index.scss';
 
 const Search = (props) => {
@@ -73,6 +75,7 @@ const Search = (props) => {
   return (
     <div className="search">
       <input className="search-input" ref={inputRef} placeholder="Sök" onChange={onHandleChange} onKeyPress={onEnter} />
+      <img src={SearchIcon} alt="Search-icon" />
     </div>
   );
 }

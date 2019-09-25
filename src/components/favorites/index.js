@@ -2,8 +2,6 @@ import React from 'react';
 
 import ListItem from '../list-item';
 
-import './index.scss';
-
 const Favorites = (props) => {
   const { 
     favorites, showFavorites, setFavorites, 

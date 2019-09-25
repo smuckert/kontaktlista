@@ -1,7 +1,9 @@
+@import '../../styles/variables.scss';
+
 .list-item {
-  background: #4e536f;
-  margin: 2px;
-  padding: 10px;
+  background: #3a3d52;
+  margin: 2px 0;
+  padding: 12px 10px;
   position: relative;
 
   &:first-child {
@@ -19,16 +21,36 @@
 
     & img {
       display: none;
-      height: 16px;
       width: 16px;
+
+      @media #{$medium} {
+        width: 18px;
+      }
     }
   }
 
   & .active-view {
+    max-height: 0px;
+    height: 300px;
+    overflow: hidden;
+    transition: max-height 0.15s;
+
+    & > h6 {
+      display: none;
+    }
+  }
+
+  & .close-button {
+    position: absolute;
+    top: 8px;
+    right: 10px;
     display: none;
   }
   
   &.active {
+    background: #b7c0ce;
+    color: #000;
+
     & .name-wrapper {
       & > img {
         display: block;
@@ -38,12 +60,17 @@
 
     & .active-view {
       display: block;
+      max-height: 300px;
+      height: 300px;
+      transition: max-height 0.15s;
+
+      & > h6 {
+        display: block;
+      }
     }
 
     & .close-button {
-      position: absolute;
-      top: 8px;
-      right: 10px;
+      display: block;
     }
 
     & h6 {
